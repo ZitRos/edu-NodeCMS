@@ -1,0 +1,58 @@
+@import "../vars/vars";
+@import "../vars/mixins";
+
+.filtersPane {
+
+    display: table;
+    margin: $primaryMargin auto;
+
+    > .filters {
+
+        > .filter {
+
+            display: table-cell;
+            border-left: 1px solid $primaryColor;
+            vertical-align: top;
+            padding-left: $primaryMargin;
+            padding-right: $primaryMargin;
+
+            &:last-child {
+                border-right: 1px solid $primaryColor;
+            }
+
+            input[type=number] {
+                width: 50px;
+            }
+
+            h3 {
+                margin: 0;
+            }
+
+            > ul {
+
+                list-style: none;
+                padding-left: 0;
+                margin: 0;
+
+                > li {
+
+                    cursor: pointer !important;
+                    @include transition($defaultTransition);
+
+                    &:hover {
+                        color: $selectionColor;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    > .buttons {
+        text-align: center;
+    }
+
+}

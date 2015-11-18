@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<%- include("components/head", { title: "Test CMS", styles: "index" }) -%>
+<body>
+<%- include("components/header") -%>
+<%- include("components/menu", { page: data.pageId, pages: data.pages, parent: data.parent }) -%>
+<div class="main card">
+    <% if (data.img) { %><div class="cover" style="background-image: url(<%= data.img %>)"></div><% } %>
+    <div>
+        <h1><%- data.title %></h1>
+        <hr/>
+        <div class="pageDesc"><%- "<p>" + (data.desc || "").replace(/\n/g, "</p><p>") + "</p>" %></div>
+    </div>
+</div>
+<%- data.usesFilters
+        ? include("components/filterPane", { filters: data.usesFilters, query: data.query, pageId: data.pageId })
+        : "" -%>
+<div class="cardHolder"><!--
+    <% for (var n in data.items) { var obj = data.items[n]; %>
+    --><div class="cardBox">
+        <a href="/?page=<%= obj.semantic || obj.id %>" class="hoverable <%- data.display === "cards" ? "" : "wide " %> card">
+            <div class="<%= obj["titleColor"] === "white" ? "white" : "black"
+                %> head" <%- obj["img"] ? "style=\"background-image: url(" + obj["img"] + ")\"" : ""
+                %>>
+                <%- obj["extraLabel"] ? "<div class='extraLabel'>" + obj["extraLabel"] + "</div>" : "" %>
+                <%- obj["img"] ? "</br></br></br>" : "" %><%- obj["title"] %></div>
+            <div class="body">
+                <%- (obj["desc"] || "").match(/^[^\n]*/)[0] %>
+            </div>
+        </a>
+    </div><!--
+    <% } %>
+--></div>
+<% if (data.seeAlsos && data.seeAlsos.length) {%>
+<div class="seeAlsos">
+<h3>See also:</h3>
+<% for (var al in data.seeAlsos) { var seeAlsos = data.seeAlsos[al]; %>
+    <div><a href="/?page=<%= (seeAlsos.semantic || seeAlsos.id) %>"><%= seeAlsos.title %></a></div>
+<% } %>
+</div>
+<% } %>
+<%- include("components/footer") -%>
+</body>
+</html>

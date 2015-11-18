@@ -1,0 +1,13 @@
+<head>
+    <title><%= title %></title>
+    <meta charset="utf-8"/>
+    <meta name="description" content="Documentation and additional information about The Edge Game"/>
+    <meta name="author" content="ZitRo"/>
+    <link href="css/<%= styles %>.css" rel="stylesheet"/>
+    <%
+        var scr = []; try { scr = scripts } catch (e) {}
+        for (var i in scr) {
+    %>
+        <script type="text/javascript" src="<%= scr[i] %>"></script>
+    <% } %>
+</head>

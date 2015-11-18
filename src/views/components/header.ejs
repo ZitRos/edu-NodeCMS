@@ -1,0 +1,10 @@
+<% var title2; try { title2 = sign; } catch (e) { title2 = ""; } %>
+<div class="header">
+    <div class="caption">
+        <img src="img/logo.png"/>
+        The Header Do<span class="letter"><span class="letterA">c</span>&nbsp;<span class="letterB">t</span></span> Com
+        <% if (title2) { %>
+            <div class="sign"><%- title2 %></div>
+        <% } %>
+    </div>
+</div>

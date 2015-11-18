@@ -1,0 +1,23 @@
+{
+  "name": "TheCMS",
+  "version": "1.0.0",
+  "description": "Lab work",
+  "main": "src/index.js",
+  "keywords": [
+    "CMS"
+  ],
+  "author": "ZitRo",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "mongodb": "^2.0.45"
+  },
+  "devDependencies": {
+    "babel-core": "^5.8.25",
+    "babel-preset-es2015": "^6.1.2",
+    "gulp": "^3.9.0",
+    "gulp-clean": "^0.3.1",
+    "gulp-sass": "^2.0.4"
+  }
+}

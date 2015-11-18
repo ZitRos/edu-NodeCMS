@@ -1,0 +1,298 @@
+html, body {
+  position: relative;
+  margin: 0;
+  font-family: monospace;
+  font-size: 14pt;
+  background: white;
+  height: 100%;
+  background: url("../img/back.jpg"); }
+
+button {
+  cursor: pointer; }
+
+body {
+  box-sizing: border-box;
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 30px; }
+
+.page {
+  padding: .5em; }
+
+p {
+  text-indent: 2.5em;
+  text-align: justify; }
+
+.cardBox {
+  position: relative;
+  overflow: hidden; }
+
+label {
+  cursor: pointer; }
+
+.card {
+  position: relative;
+  top: 0;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: white;
+  box-shadow: 0 1px 3px 0 rgba(100, 100, 100, 0.5);
+  box-sizing: border-box;
+  margin: 18px;
+  vertical-align: top;
+  text-align: left;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease; }
+  .card.main {
+    width: auto;
+    display: block;
+    overflow: hidden; }
+    .card.main h1 {
+      padding: 0 18px 0 18px; }
+  .card.hoverable {
+    cursor: pointer; }
+  .card.wide {
+    display: block !important;
+    width: auto !important; }
+  .card.hoverable:hover {
+    top: -4px;
+    box-shadow: 0 1px 8px 1px rgba(100, 100, 100, 0.5); }
+  .card .pre-body {
+    position: relative; }
+  .card .cover {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    opacity: 0.15; }
+  .card .head {
+    position: relative;
+    box-sizing: border-box;
+    font-size: 21pt;
+    font-weight: 900;
+    background-size: cover;
+    width: 100%;
+    padding: .5em;
+    color: white;
+    text-shadow: 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black; }
+    .card .head.black {
+      color: black;
+      text-shadow: 0 0 4px white, 0 0 4px white, 0 0 4px white, 0 0 4px white, 0 0 4px white, 0 0 4px white, 0 0 4px white, 0 0 4px white; }
+    .card .head .extraLabel {
+      float: right; }
+  .card > div {
+    position: relative; }
+  .card .body {
+    padding: .3em; }
+
+.cardHolder {
+  text-align: center;
+  margin: 1em 0 1em 0; }
+
+.clickable {
+  display: inline-block;
+  background: none;
+  border: none;
+  text-decoration: none;
+  margin: 0;
+  cursor: pointer;
+  font-weight: 900;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease; }
+  .clickable:active {
+    text-decoration: underline; }
+  .clickable:hover {
+    color: #003CAF;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-decoration: underline;
+    background-color: rgba(255, 255, 255, 0.5); }
+
+@media screen and (min-width: 800px) {
+  .cardBox {
+    display: inline-block;
+    width: 50%; } }
+
+@media screen and (min-width: 1200px) {
+  .cardBox {
+    width: 33.333333333%; } }
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 1; }
+  20% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  60% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@-moz-keyframes blink {
+  0% {
+    opacity: 1; }
+  20% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  60% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@-ms-keyframes blink {
+  0% {
+    opacity: 1; }
+  20% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  60% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@-o-keyframes blink {
+  0% {
+    opacity: 1; }
+  20% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  60% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes blink {
+  0% {
+    opacity: 1; }
+  20% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  60% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+.header {
+  background-color: #FFF;
+  box-shadow: 0 1px 3px 0 rgba(100, 100, 100, 0.5);
+  padding: .5em; }
+  .header .caption {
+    font-size: 24pt;
+    font-style: italic; }
+    .header .caption > img {
+      display: inline-block;
+      vertical-align: middle; }
+    .header .caption .letter {
+      display: inline-block;
+      position: relative; }
+      .header .caption .letter > span {
+        position: absolute;
+        left: 0; }
+      .header .caption .letter > .letterA {
+        -webkit-animation: blink 6s ease-in-out infinite;
+        -moz-animation: blink 6s ease-in-out infinite;
+        -ms-animation: blink 6s ease-in-out infinite;
+        -o-animation: blink 6s ease-in-out infinite;
+        animation: blink 6s ease-in-out infinite; }
+      .header .caption .letter > .letterB {
+        -webkit-animation: blink 6s ease-in-out infinite;
+        -moz-animation: blink 6s ease-in-out infinite;
+        -ms-animation: blink 6s ease-in-out infinite;
+        -o-animation: blink 6s ease-in-out infinite;
+        animation: blink 6s ease-in-out infinite;
+        -webkit-animation-delay: -3s;
+        -moz-animation-delay: -3s;
+        -ms-animation-delay: -3s;
+        -o-animation-delay: -3s;
+        animation-delay: -3s; }
+    .header .caption .sign {
+      float: right;
+      color: red;
+      font-size: 14pt; }
+
+.menu {
+  display: block;
+  list-style: none;
+  padding: 0;
+  text-align: center; }
+  .menu > li {
+    display: inline-block;
+    margin: 0;
+    font-size: 16pt;
+    cursor: pointer;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease; }
+    .menu > li.active {
+      text-decoration: underline; }
+    .menu > li:hover {
+      padding-left: 1em;
+      padding-right: 1em;
+      background-color: rgba(255, 255, 255, 0.5); }
+    .menu > li > a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      padding: .5em; }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: #FFF;
+  box-shadow: 0 1px 3px 0 rgba(100, 100, 100, 0.5);
+  padding: .5em;
+  text-align: center;
+  font-size: 10pt; }
+
+button.save {
+  position: fixed;
+  left: 30%;
+  width: 40%;
+  bottom: 1em;
+  background: #CBFFD7;
+  border: 1px solid #007507;
+  border-radius: 3px;
+  padding: .5em;
+  font-size: 12pt;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  z-index: 1; }
+
+.card .cross {
+  position: absolute;
+  visibility: hidden;
+  right: .5em;
+  top: .5em;
+  background: #ffd0b0;
+  border: 1px solid #754844;
+  border-radius: 3px;
+  padding: .5em;
+  font-size: 12pt;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35); }
+
+.card:hover .cross {
+  visibility: visible; }
+
+#add {
+  clear: both;
+  background: #CBFFD7;
+  border: 1px solid #007507;
+  border-radius: 3px;
+  padding: .5em;
+  font-size: 12pt;
+  margin: .5em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35); }

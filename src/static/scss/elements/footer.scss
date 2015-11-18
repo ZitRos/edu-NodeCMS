@@ -1,0 +1,15 @@
+@import "../vars/vars";
+
+.footer {
+
+    position: absolute;
+    bottom: 0;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: $primaryColor;
+    box-shadow: $primaryShadow;
+    padding: .5em;
+    text-align: center;
+    font-size: 10pt;
+
+}

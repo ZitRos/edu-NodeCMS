@@ -1,0 +1,43 @@
+@import "../vars/mixins";
+
+.menu {
+
+    display: block;
+    list-style: none;
+    padding: 0;
+    text-align: center;
+
+    > li {
+
+        display: inline-block;
+        margin: 0;
+        font-size: 16pt;
+        cursor: pointer;
+        @include transition (all .3s ease);
+
+        &.active {
+
+            text-decoration: underline;
+
+        }
+
+        &:hover {
+
+            padding-left: 1em;
+            padding-right: 1em;
+            background-color: rgba(255, 255, 255, 0.5);
+
+        }
+
+        > a {
+
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            padding: .5em;
+
+        }
+
+    }
+
+}

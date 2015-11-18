@@ -1,0 +1,49 @@
+<%
+    /**
+     * @param {string} name
+     * @param {string} value - String like "val" or "val1,val2,val3"
+     */
+    var hasQuery = function (name, value) {
+        if (!query[name]) return false;
+        var q = query[name] instanceof Array ? query[name] : query[name].split(",");
+        return q.filter(function (e) {
+            if (typeof value === "undefined") return true;
+            return e == (value + "");
+        }).length;
+    };
+%>
+<form class="filtersPane" method="GET">
+    <input type="hidden" name="page" value="<%= pageId %>"/>
+    <div class="filters"><!--
+        <%
+        for (var f in filters) { filter = filters[f];
+        %>
+        --><div class="filter">
+            <h3><%= filter.label || "Unlabeled filter" %></h3>
+            <% if (filter.type === "set") { %>
+            <ul><% for (var i = 0; i < (filter.set || []).length; i++) { var option = filter.set[i] || {}, name, val; %>
+                <li>
+                    <label>
+                        <input type="checkbox" name="<%=(name=filter.name)%>" value="<%=(val = option.value)%>" <%=hasQuery(name, val)?"checked":""%>/>
+                        <%= option.title || "No option title" %>
+                    </label>
+                </li>
+            <% } %>
+            </ul>
+            <% } else if (filter.type === "range") { %>
+                <div>
+                    <input type="number" name="<%=filter.name%>.min" value="<%=hasQuery(filter.name + ".min") ? query[filter.name + ".min"] : filter.minDefault || 0%>" min="<%=filter.min || 0%>" max="<%=filter.max || Infinity%>"/>
+                    ...
+                    <input type="number" name="<%=filter.name%>.max" value="<%=hasQuery(filter.name + ".max") ? query[filter.name + ".max"] : filter.maxDefault || ""%>" min="<%=filter.min || 0%>" max="<%=filter.max || Infinity%>"/>
+                </div>
+            <% } %>
+        </div><!--
+        <%
+        }
+        %>-->
+    </div>
+    <div class="buttons">
+        <button class="clickable">Применить</button>
+        <input class="clickable" type="button" value="Убрать фильтры" onclick="[].slice.call(document.querySelectorAll('form input[type=number]')).forEach(function(e){e.value = ''});[].slice.call(document.querySelectorAll('form input[type=checkbox]')).forEach(function(e){e.removeAttribute('checked');e.checked=false;});"/>
+    </div>
+</form>

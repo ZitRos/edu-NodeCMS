@@ -1,0 +1,46 @@
+@import "elements/basic";
+@import "elements/header";
+@import "elements/menu";
+@import "elements/footer";
+
+button.save {
+    position: fixed;
+    left: 30%;
+    width: 40%;
+    bottom: 1em;
+    background: #CBFFD7;
+    border: 1px solid #007507;
+    border-radius: 3px;
+    padding: .5em;
+    font-size: 12pt;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    z-index: 1;
+}
+
+.card .cross {
+    position: absolute;
+    visibility: hidden;
+    right: .5em;
+    top: .5em;
+    background: #ffd0b0;
+    border: 1px solid #754844;
+    border-radius: 3px;
+    padding: .5em;
+    font-size: 12pt;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+.card:hover .cross {
+    visibility: visible;
+}
+
+#add {
+    clear: both;
+    background: #CBFFD7;
+    border: 1px solid #007507;
+    border-radius: 3px;
+    padding: .5em;
+    font-size: 12pt;
+    margin: .5em;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}

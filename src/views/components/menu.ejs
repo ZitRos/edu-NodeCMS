@@ -1,0 +1,18 @@
+<ul class="menu">
+    <%
+    var currentPage = page || "0";
+
+    for (var p in pages) {
+    %>
+        <li <%= (p === currentPage || currentPage === pages[p].semantic) ? "class=active" : "" %>>
+            <a href="<%- pages[p].link || "/" -%>"><%- pages[p].name -%></a>
+        </li>
+    <%
+    }
+    if (parent !== 0) {
+    %>
+        <li>
+            <a href="<%- ("/?page=" + parent) -%>">Back</a>
+        </li>
+    <%}%>
+</ul>
