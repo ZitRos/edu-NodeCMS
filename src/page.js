@@ -47,13 +47,25 @@ var requireSeeAlsos = function (alsosArray, callback) {
 
 /**
  * @param query
+ * @param req
+ * @param res
  * @param {function} render
  * @constructor
  */
-export var Page = function (query, render) {
+export var Page = function ({query, req, res}, render) {
 
     let pageId = query.page || 1,
         pageObject, children = [], thisPage, childrenToLoad = 0, childrenLoaded = 0, itemPos = 0;
+
+    if (req.session.history) {
+        let last = req.session.history[req.session.history.length - 1],
+            url = req.originalUrl;
+        if (last !== url) req.session.history.splice(0, 0, {
+            name: isFinite(pageId) ? `Page ${pageId}` : pageId,
+            url: url
+        });
+    } else req.session.history = [];
+    if (req.session.history.length > 20) req.session.history.pop();
 
     macro.reset();
 
@@ -68,7 +80,7 @@ export var Page = function (query, render) {
         if (obj.children instanceof Array) processChildren(obj.children);
     }
 
-    function parseDescription (object, text, nullize) {
+    function parseDescription (object, text = "", nullize = false) {
         return text.replace(/\{\{(\$?[a-zA-Z]+)\((.*)}}/g, function (part, name, args = "") {
             if (args.length > 1) args = args.slice(0, args.length - 1); // remove last )
             if (nullize) return "";
@@ -120,13 +132,15 @@ export var Page = function (query, render) {
     }).toArray((err, items) => { if (err) console.error(err);
 
         thisPage = (items || [])[0];
-        if (!thisPage) { render({ items: [], title: "404!" }); return; }
         childrenToLoad++; // necessarily wait for children load
 
         let usesFilters =
                 thisPage["usesFilters"] instanceof Array && thisPage["usesFilters"].length,
             filters = [],
             findFilter = { parent: thisPage.id };
+
+        let e404 = !thisPage;
+        thisPage = thisPage || {};
 
         pageObject = {
             query: query,
@@ -138,8 +152,15 @@ export var Page = function (query, render) {
             pages: PAGES,
             parent: thisPage.parent,
             seeAlsos: thisPage["seeAlso"] || [],
-            usesFilters: usesFilters ? filters : false
+            usesFilters: usesFilters ? filters : false,
+            session: req.session
         };
+
+        if (e404) {
+            pageObject.title = "404!";
+            render(pageObject);
+            return;
+        }
 
         if (thisPage.img) pageObject.img = thisPage.img;
 
@@ -199,9 +220,12 @@ export var Page = function (query, render) {
             };
         }
 
+        let time = new Date();
+
         // keep under
         db.collection("pages").find(findFilter).toArray((err, items) => {
             if (err) console.error(err);
+            console.log("Find query took " + ((new Date()) - time) + "ms");
             processChildren(items);
             childrenLoaded++; // release children load
             tryFin();

@@ -2,7 +2,7 @@
 <html>
 <%- include("components/head", { title: "Test CMS", styles: "index" }) -%>
 <body>
-<%- include("components/header") -%>
+<%- include("components/header", { session: data.session }) -%>
 <%- include("components/menu", { page: data.pageId, pages: data.pages, parent: data.parent }) -%>
 <div class="main card">
     <% if (data.img) { %><div class="cover" style="background-image: url(<%= data.img %>)"></div><% } %>
@@ -39,6 +39,6 @@
 <% } %>
 </div>
 <% } %>
-<%- include("components/footer") -%>
+<%- include("components/footer", { session: data.session }) -%>
 </body>
 </html>

@@ -39,6 +39,66 @@ $topLetterAnimation: 6;
 
         }
 
+        #bookmarks {
+
+            $height: 50px;
+
+            position: relative;
+            overflow: visible;
+            float: right;
+            width: 36px;
+            height: $height;
+            background: url(../img/bookmark.png);
+            background-size: cover;
+            color: white;
+            padding: 12px 0;
+            text-align: center;
+            font-size: 14pt;
+            box-sizing: border-box;
+            cursor: pointer;
+            z-index: 999;
+
+            &:hover {
+                margin-right: 2px !important;
+            }
+
+            .links {
+
+                color: black;
+                display: none;
+                position: absolute;
+                top: $height;
+                right: 0;
+                border: 1px solid black;
+                background: rgba(255, 255, 255, 0.95);
+
+                h3 {
+                    margin: .5em;
+                }
+
+                ul {
+
+                    font-size: 14pt;
+                    padding: 0;
+                    list-style: decimal-leading-zero inside;
+                    margin: .5em .5em;
+                    white-space: nowrap;
+                    text-align: left;
+
+                    a {
+
+                    }
+
+                }
+
+            }
+
+            &:hover .links {
+                display: block;
+            }
+
+        }
+
         .letter {
 
             display: inline-block;

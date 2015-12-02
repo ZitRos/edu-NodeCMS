@@ -1,6 +1,17 @@
 <% var title2; try { title2 = sign; } catch (e) { title2 = ""; } %>
 <div class="header">
     <div class="caption">
+        <div id="bookmarks">
+            <%= session.history.length %>
+            <div class="links">
+                <h3>History</h3>
+                <ul>
+                <% for (var i = 0; i < session.history.length; i++) { %>
+                    <li><a href="<%= session.history[i].url %>"><%= session.history[i].name %></a></li>
+                <% } %>
+                </ul>
+            </div>
+        </div>
         <img src="img/logo.png"/>
         The Header Do<span class="letter"><span class="letterA">c</span>&nbsp;<span class="letterB">t</span></span> Com
         <% if (title2) { %>

@@ -6,6 +6,7 @@ import path from "path";
 //import mongo from "./mongo";
 import bodyParser from "body-parser";
 import {Page} from "./page";
+import session from "express-session";
 
 // Server start file \\
 
@@ -21,6 +22,12 @@ app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: true
 }));
+app.use(session({
+    secret: "the ultimate secret",
+    cookie: { maxAge: 7*24*60*60*1000 }, // 1 week
+    resave: true,
+    saveUninitialized: true
+}));
 
 var getNameFromFileName = function (file) {
     return file.match(/(.*)\./)[1];
@@ -31,7 +38,7 @@ for (let file of fs.readdirSync("./src/views")) {
     if (!/.*\..*/.test(file)) continue; // skip directories
     let pageName = getNameFromFileName(file);
     app.get(`/${ (pageName === "index") ? "" : pageName }`, (req, res) => {
-        new Page(req.query, function (data) {
+        new Page({ query: req.query, req: req, res: res }, function (data) {
             res.render("index", { data: data });
         });
     });

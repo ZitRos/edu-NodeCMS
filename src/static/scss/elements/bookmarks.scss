@@ -1,0 +1,16 @@
+#bookmarksPanel {
+
+    position: absolute;
+    left: 20%;
+    top: 20%;
+    width: 60%;
+    height: 60%;
+    padding: 1em;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.95);
+
+    .close {
+        float: right;
+    }
+
+}
