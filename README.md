@@ -1,5 +1,7 @@
 # Keep-It-Simple NodeJS+MongoDB CMS
 
+![Sample](https://cloud.githubusercontent.com/assets/4989256/11591491/cf21773e-9aa0-11e5-9b3b-6185ffaed338.png)
+
 The keep-it-simple modern Content Management Systems built on NodeJS and MongoDB.
 
 To run the CMS, launch MongoDB, check src/config.json for correct settings,
